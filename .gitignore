@@ -1,1 +1,27 @@
+# Terraform: state files contain resource details and sometimes secrets
+*.tfstate
+*.tfstate.*
 .terraform/
+
+.terraform.lock.hcl.bak
+*.tfvars
+*.tfvars.json
+crash.log
+override.tf
+override.tf.json
+
+# Azure Functions local settings (can hold connection strings)
+local.settings.json
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Editor / OS clutter
+.vscode/
+.DS_Store
+Thumbs.db
+.env
