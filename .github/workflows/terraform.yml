@@ -1,0 +1,46 @@
+name: terraform
+
+on:
+  pull_request:
+    paths: ["infra/**", ".github/workflows/terraform.yml"]
+  push:
+    branches: [main]
+    paths: ["infra/**", ".github/workflows/terraform.yml"]
+  workflow_dispatch:
+
+permissions:
+  id-token: write   # lets the job request an OIDC token for Azure
+  contents: read
+
+env:
+  ARM_USE_OIDC: "true"
+  ARM_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
+  ARM_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
+  ARM_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+defaults:
+  run:
+    working-directory: infra
+
+jobs:
+  plan:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    # no "environment:" here -> uses the pull_request federated credential
+    steps:
+      - uses: actions/checkout@v5
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform fmt -check
+      - run: terraform init -input=false
+      - run: terraform validate
+      - run: terraform plan -input=false
+
+  apply:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment: production   # pauses for your approval; uses the environment credential
+    steps:
+      - uses: actions/checkout@v5
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform init -input=false
+      - run: terraform apply -auto-approve -input=false
