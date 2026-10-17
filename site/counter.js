@@ -1,7 +1,6 @@
-cat > site/counter.js <<EOF
 // Visitor counter: records this visit via the API and shows the total.
 (function () {
-  const API_URL = "$API_URL";
+  const API_URL = "https://func-resume-5ldg0q.azurewebsites.net/api/visitor-count";
   const el = document.getElementById("visits");
   if (!el) return;
 
@@ -18,6 +17,3 @@ cat > site/counter.js <<EOF
       el.textContent = "unavailable";
     });
 })();
-EOF
-
-grep -n "API_URL =" site/counter.js
