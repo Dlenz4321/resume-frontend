@@ -34,7 +34,26 @@ h1, h2, h3 {
   margin-bottom: 28px;
 }
 
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
 .hero h1 { font-size: 2.6rem; letter-spacing: 0.5px; }
+
+.print-btn {
+  background: var(--navy);
+  color: var(--parchment);
+  border: 1px solid var(--navy);
+  border-radius: 4px;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.print-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
 .tagline { color: var(--gold); font-weight: 600; margin: 6px 0; }
 .contact { color: var(--muted); margin: 0; }
 
@@ -66,7 +85,16 @@ h3 { font-size: 1.1rem; }
 
 ul { margin: 6px 0 0; padding-left: 20px; }
 .certs { columns: 2; column-gap: 32px; }
-.skills { margin: 0; }
+.certs li { break-inside: avoid; }
+.skill-groups {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 4px 20px;
+  margin: 0;
+}
+.skill-groups dt { font-weight: 700; color: var(--navy); }
+.skill-groups dd { margin: 0; }
+.job-head p { margin: 0; }
 
 footer {
   border-top: 1px solid var(--gold);
@@ -76,8 +104,20 @@ footer {
 }
 
 #visits { color: var(--navy); font-weight: 700; }
+.counter-note { font-size: 0.9rem; }
 
 @media (max-width: 600px) {
   .hero h1 { font-size: 2rem; }
   .certs { columns: 1; }
+  .skill-groups { grid-template-columns: 1fr; }
+  .skill-groups dd { margin-bottom: 6px; }
+}
+
+/* "Save as PDF" uses the browser's print dialog; keep the printout clean */
+@media print {
+  body { background: #fff; font-size: 11pt; }
+  .resume { padding: 0; max-width: none; }
+  .print-btn, footer { display: none; }
+  a { color: var(--ink); text-decoration: none; }
+  section, .job { break-inside: avoid; }
 }

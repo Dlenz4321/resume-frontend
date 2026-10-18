@@ -5,13 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>David Lenz | Cloud & Systems Administration</title>
   <meta name="description" content="Resume of David Lenz, Cloud and Systems Technician focused on Azure, Microsoft 365, and infrastructure automation.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="David Lenz | Cloud & Systems Administration">
+  <meta property="og:description" content="Azure, Microsoft 365, and infrastructure as code. Resume site built for the Cloud Resume Challenge.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231b2a41'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' text-anchor='middle' fill='%23b08d57'%3EDL%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <main class="resume">
 
     <header class="hero">
-      <h1>David Lenz</h1>
+      <div class="hero-top">
+        <h1>David Lenz</h1>
+        <button class="print-btn" type="button" onclick="window.print()">Save as PDF</button>
+      </div>
       <p class="tagline">Cloud & Systems Administration · Azure · Microsoft 365 · Infrastructure as Code</p>
       <p class="contact">
         Phoenix, AZ ·
@@ -44,20 +51,39 @@
           <li>Administer Microsoft 365, Azure, and Intune for corporate endpoints and users.</li>
           <li>Provision VLANs, IP addressing, and devices across Cisco Meraki and UniFi networks.</li>
           <li>Configure and support Windows endpoints; resolve escalated help desk issues.</li>
-          <li>[Add a result with a number: e.g., "Enrolled X devices into Intune compliance policies."]</li>
+          <li>Clear 50–60 support tickets per week.</li>
+          <li>Help troubleshoot issues across 500+ golf courses.</li>
         </ul>
       </article>
 
       <article class="job">
         <div class="job-head">
           <h3>Junior Technical Support Engineer — 10ZiG Technology</h3>
-          <span class="dates">[Start Month Year] – Present</span>
+          <span class="dates">Feb 2026 – Jun 2026</span>
         </div>
         <p class="location">Phoenix, AZ</p>
         <ul>
-          <li>Support thin client and VDI deployments across Azure Virtual Desktop, Citrix, and VMware.</li>
-          <li>[Add a specific accomplishment: e.g., "Diagnosed and resolved X-type connection issues for enterprise customers."]</li>
-          <li>[Add another: documentation, KB articles, customer count, etc.]</li>
+          <li>Supported thin client and VDI deployments across Azure Virtual Desktop, Citrix, and VMware.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <article class="job">
+        <div class="job-head">
+          <h3>Cloud Resume Challenge (Azure)</h3>
+          <span class="dates">2026</span>
+        </div>
+        <p class="location">This site · Source code:
+          <a href="https://github.com/Dlenz4321/resume-frontend">frontend</a> ·
+          <a href="https://github.com/Dlenz4321/resume-backend">backend</a>
+        </p>
+        <ul>
+          <li>Built a serverless visitor counter: a Python Azure Function (Flex Consumption) writing to Cosmos DB through a managed identity, with database keys disabled.</li>
+          <li>Defined all infrastructure in Terraform with remote state, deployed through GitHub Actions using OIDC, with no stored secrets.</li>
+          <li>Added pytest unit tests, pull-request plan reviews, and a manual approval gate before every production change.</li>
+          <li>Limited the pipeline identity to one resource group, with an ABAC condition that stops it from escalating its own permissions.</li>
         </ul>
       </article>
     </section>
@@ -65,8 +91,8 @@
     <section>
       <h2>Certifications</h2>
       <ul class="certs">
-        <li>Microsoft Certified: Azure Administrator Associate (AZ-104)</li>
-        <li>Microsoft Certified: Azure Solutions Architect Expert (AZ-305)</li>
+        <li>Azure Administrator Associate (AZ-104) — Microsoft</li>
+        <li>Azure Solutions Architect Expert (AZ-305) — Microsoft</li>
         <li>AWS Certified Cloud Practitioner</li>
         <li>CompTIA Security+</li>
         <li>CompTIA Network+</li>
@@ -76,33 +102,34 @@
     </section>
 
     <section>
-      <h2>Education</h2>
-      <p><strong>B.S. Cloud and Network Engineering</strong> — Western Governors University
-        <span class="dates">Expected Dec 2026</span></p>
-    </section>
-
-    <section>
       <h2>Skills</h2>
-      <p class="skills">
-        Azure · Entra ID · Intune · Microsoft 365 · Active Directory · PowerShell · Terraform ·
-        GitHub Actions · Git · Cisco Meraki · Ubiquiti UniFi · AVD · Citrix · VMware · Linux
-      </p>
+      <dl class="skill-groups">
+        <dt>Cloud</dt>
+        <dd>Azure · Azure Functions · Cosmos DB · Azure Storage · AWS fundamentals</dd>
+        <dt>Identity &amp; endpoint</dt>
+        <dd>Entra ID · Intune · Microsoft 365 · Active Directory</dd>
+        <dt>Automation &amp; DevOps</dt>
+        <dd>Terraform · GitHub Actions · Git · PowerShell · Python · Bash</dd>
+        <dt>Networking</dt>
+        <dd>Cisco Meraki · Ubiquiti UniFi · VLANs · IP addressing</dd>
+        <dt>Virtualization &amp; OS</dt>
+        <dd>Azure Virtual Desktop · Citrix · VMware · Linux · Windows</dd>
+      </dl>
     </section>
 
     <section>
-      <h2>Projects</h2>
-      <article class="job">
-        <h3>Cloud Resume Challenge (Azure)</h3>
-        <p>
-          This site. Serverless visitor counter (Azure Functions + Cosmos DB), infrastructure
-          defined in Terraform, and deployed through GitHub Actions with OIDC, with no stored credentials.
-          <a href="[blog-post-url]">Read what I learned building it →</a>
-        </p>
-      </article>
+      <h2>Education</h2>
+      <div class="job-head">
+        <p><strong>B.S. Cloud and Network Engineering</strong> — Western Governors University</p>
+        <span class="dates">Expected Dec 2026</span>
+      </div>
     </section>
 
     <footer>
-      <p>Visitors: <span id="visits">…</span></p>
+      <p>Visitors: <span id="visits">…</span>
+        <span class="counter-note">· counted by an
+          <a href="https://github.com/Dlenz4321/resume-backend">Azure Function + Cosmos DB</a></span>
+      </p>
     </footer>
 
   </main>
