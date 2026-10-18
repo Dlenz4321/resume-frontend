@@ -121,3 +121,5 @@ footer {
   a { color: var(--ink); text-decoration: none; }
   section, .job { break-inside: avoid; }
 }
+
+a.print-btn { display: inline-block; text-decoration: none; }
